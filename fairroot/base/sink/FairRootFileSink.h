@@ -35,10 +35,8 @@ class FairRootFileSink : public FairSink
     FairRootFileSink(const TString RootFileName, const char* Title = "OutputRootFile");
     FairRootFileSink(const FairRootFileSink&) = delete;
     FairRootFileSink operator=(const FairRootFileSink&) = delete;
-    ~FairRootFileSink() override = default;
 
     Bool_t InitSink() override;
-    void Close() override;
     void Reset() override;
 
     Sink_Type GetSinkType() override { return kFILESINK; }
@@ -66,6 +64,7 @@ class FairRootFileSink : public FairSink
     void WriteGeometry() override;
 
     FairSink* CloneSink() override;
+    void Close() override;
 
   private:
     /** Title of input sink, could be input, background or signal*/
